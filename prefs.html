@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讀書偏好調查｜讀伴計畫</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#EDF1EE; --ink:#16243A; --muted:#55637A; --lamp:#F2B632; --teal:#2F6F6B; --white:#FFFFFF;
+    --serif:"Noto Serif TC","Songti TC","PMingLiU",serif; --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.75; font-size:17px; }
+  a { color:inherit; }
+  :focus-visible { outline:3px solid var(--lamp); outline-offset:2px; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+  .top { padding:28px 0 8px; font-size:15px; }
+  .top a { color:var(--teal); font-weight:700; text-decoration:none; }
+  .intro { padding:28px 0 44px; }
+  h1 { font-family:var(--serif); font-weight:900; font-size:clamp(30px,5vw,44px); line-height:1.3; margin:0 0 16px; }
+  .lead { color:var(--muted); margin:0; max-width:34em; }
+  .join { background:var(--ink); color:var(--white); padding:48px 0 64px; }
+  form { display:grid; gap:28px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:22px 24px; }
+  label, legend { display:block; font-weight:700; font-size:15.5px; margin-bottom:8px; padding:0; }
+  .hint { font-weight:400; color:#B8C3D6; font-size:14px; }
+  input[type=text], textarea { width:100%; font:400 16px var(--sans); padding:11px 12px; border-radius:6px; border:2px solid transparent; background:var(--white); color:var(--ink); }
+  input:focus, textarea:focus { border-color:var(--lamp); outline:none; }
+  fieldset { border:0; margin:0; padding:0; }
+  .opts { display:flex; flex-direction:column; gap:8px; }
+  .opts label { font-weight:400; display:flex; align-items:center; gap:10px; margin:0; cursor:pointer; }
+  .opts input, .consent input { width:18px; height:18px; accent-color:var(--lamp); flex:none; }
+  .consent { display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:14.5px; color:#B8C3D6; }
+  .consent input { margin-top:5px; }
+  .btn { display:inline-block; background:var(--lamp); color:var(--ink); font:700 17px var(--sans); padding:14px 28px; border:0; border-radius:6px; cursor:pointer; }
+  .btn:hover { background:#F7C550; }
+  .btn[disabled] { opacity:.6; cursor:wait; }
+  .msg { margin:0; padding:14px 16px; border-radius:6px; font-size:15.5px; display:none; }
+  .msg.ok { display:block; background:#DDEFE0; color:#17402A; }
+  .msg.err { display:block; background:#F8DCDC; color:#6B1D1D; }
+  @media (max-width:600px) { .two { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="top"><a href="index.html">← 讀伴計畫</a></div>
+  <div class="intro">
+    <h1>讀書偏好調查</h1>
+    <p class="lead">約三分鐘。我們只用這些答案幫你找讀書習慣相近的人，不會公開。沒有標準答案，照平常的樣子選就好。</p>
+  </div>
+</header>
+
+<section class="join">
+  <div class="wrap">
+    <form id="form" novalidate>
+
+      <div class="two">
+        <div>
+          <label for="nickname">暱稱</label>
+          <input type="text" id="nickname" name="nickname" required maxlength="30">
+        </div>
+        <div>
+          <label for="contact">聯絡方式 <span class="hint">（請與報名時相同）</span></label>
+          <input type="text" id="contact" name="contact" required maxlength="60">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>一起讀書時，你希望互動多少？</legend>
+        <div class="opts">
+          <label><input type="radio" name="talk_level" value="安靜各讀各的" required> 安靜各讀各的</label>
+          <label><input type="radio" name="talk_level" value="偶爾聊天討論"> 偶爾聊天、討論</label>
+          <label><input type="radio" name="talk_level" value="常常互相討論"> 常常互相討論</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>你習慣的讀書節奏</legend>
+        <div class="opts">
+          <label><input type="radio" name="rhythm" value="連續讀很久" required> 一次連續讀很久</label>
+          <label><input type="radio" name="rhythm" value="番茄鐘分段"> 用番茄鐘分段讀</label>
+          <label><input type="radio" name="rhythm" value="都可以"> 都可以</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>線上讀書時，願意開鏡頭嗎？</legend>
+        <div class="opts">
+          <label><input type="radio" name="camera" value="願意開鏡頭" required> 願意</label>
+          <label><input type="radio" name="camera" value="不開鏡頭"> 不想開</label>
+          <label><input type="radio" name="camera" value="都可以"> 都可以</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>偏好的讀書地點 <span class="hint">（可複選）</span></legend>
+        <div class="opts">
+          <label><input type="checkbox" name="places" value="圖書館"> 圖書館</label>
+          <label><input type="checkbox" name="places" value="咖啡廳"> 咖啡廳</label>
+          <label><input type="checkbox" name="places" value="家裡"> 家裡</label>
+          <label><input type="checkbox" name="places" value="線上為主"> 線上為主</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>對約定時間的彈性</legend>
+        <div class="opts">
+          <label><input type="radio" name="punctuality" value="一定要準時" required> 一定要準時</label>
+          <label><input type="radio" name="punctuality" value="稍微彈性"> 稍微彈性，晚幾分鐘沒關係</label>
+          <label><input type="radio" name="punctuality" value="很彈性"> 很彈性，可以臨時改期</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>你希望讀伴給你什麼？ <span class="hint">（可複選）</span></legend>
+        <div class="opts">
+          <label><input type="checkbox" name="expectations" value="單純陪伴"> 單純陪伴，有人在旁邊就好</label>
+          <label><input type="checkbox" name="expectations" value="互相提醒進度"> 互相提醒進度</label>
+          <label><input type="checkbox" name="expectations" value="互相講解"> 互相講解、討論題目</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>平常的聯絡習慣</legend>
+        <div class="opts">
+          <label><input type="radio" name="msg_style" value="常聊天回訊息" required> 常常聊天、回訊息很快</label>
+          <label><input type="radio" name="msg_style" value="只在約讀書時聯絡"> 只在約讀書時才聯絡</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>你覺得自己比較偏哪一種？ <span class="hint">（選填）</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="social_style" value="外向"> 外向</label>
+          <label><input type="radio" name="social_style" value="偏外向"> 偏外向</label>
+          <label><input type="radio" name="social_style" value="偏內向"> 偏內向</label>
+          <label><input type="radio" name="social_style" value="內向"> 內向</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="note">還有想補充的嗎？ <span class="hint">（選填，例如想避開的情況）</span></label>
+        <textarea id="note" name="note" rows="3" maxlength="300"></textarea>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>我了解這些資料只用於配對，不會公開。</span>
+      </label>
+
+      <div><button class="btn" type="submit" id="submitBtn">送出偏好調查</button></div>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  // ===== 設定：與 index.html 使用同一組值 =====
+  const CONFIG = {
+    SUPABASE_URL: "https://oltuouvipqvooyzrsywv.supabase.co",
+    SUPABASE_ANON_KEY: "sb_publishable_WdBVwvhnNfq1oJKACFKeJA_relnymUk"   // 貼上你的 Publishable key（跟 index.html 一樣）
+  };
+
+  const form = document.getElementById("form");
+  const msg = document.getElementById("msg");
+  const btn = document.getElementById("submitBtn");
+  function show(type, text) { msg.className = "msg " + type; msg.textContent = text; }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    const d = new FormData(form);
+    const row = {
+      nickname: d.get("nickname").trim(),
+      contact: d.get("contact").trim(),
+      talk_level: d.get("talk_level"),
+      rhythm: d.get("rhythm"),
+      camera: d.get("camera"),
+      places: d.getAll("places"),
+      punctuality: d.get("punctuality"),
+      expectations: d.getAll("expectations"),
+      msg_style: d.get("msg_style"),
+      social_style: d.get("social_style") || null,
+      note: (d.get("note") || "").trim() || null
+    };
+
+    btn.disabled = true; btn.textContent = "送出中…";
+    try {
+      if (!CONFIG.SUPABASE_URL || !CONFIG.SUPABASE_ANON_KEY) {
+        console.log("尚未設定 Supabase，示範模式，資料未儲存：", row);
+      } else {
+        const base = CONFIG.SUPABASE_URL.replace(/\/rest\/v1\/?$/, "").replace(/\/$/, "");
+        const headers = { "Content-Type": "application/json", "apikey": CONFIG.SUPABASE_ANON_KEY, "Prefer": "return=minimal" };
+        if (CONFIG.SUPABASE_ANON_KEY.startsWith("eyJ")) headers["Authorization"] = "Bearer " + CONFIG.SUPABASE_ANON_KEY;
+        const res = await fetch(base + "/rest/v1/preferences", { method: "POST", headers, body: JSON.stringify(row) });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+      }
+      form.reset();
+      show("ok", "謝謝！已收到你的偏好，配對完成後我們會用你留的聯絡方式聯絡你。");
+    } catch (err) {
+      console.error(err);
+      show("err", "送出失敗。請確認網路後再試一次，還是不行的話，請私訊 IG @stu.dymatch。");
+    } finally {
+      btn.disabled = false; btn.textContent = "送出偏好調查";
+    }
+  });
+</script>
+</body>
+</html>
